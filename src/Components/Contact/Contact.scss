@@ -1,0 +1,162 @@
+@import "../Css/mixin.scss";
+.contact {
+  width: 100%;
+  position: relative;
+  @include sm {
+    margin-top: 100px;
+  }
+  @include ph {
+    margin-top: 80px;
+  }
+
+  img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    object-fit: cover;
+    opacity: 0.3;
+  }
+
+  .form {
+    width: 100%;
+    padding: 5rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @include sm {
+      padding: 4rem 0;
+    }
+    h2 {
+      width: 90%;
+      font-size: 2rem;
+      font-weight: 600;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @include sm {
+        width: 30rem;
+        font-size: 1.5rem;
+        text-align: center;
+      }
+      @include ph {
+        width: 20rem;
+      }
+    }
+    p {
+      width: 60%;
+      font-size: 1rem;
+      font-weight: 500;
+      color: rgb(52, 51, 51);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @include sm {
+        width: 30rem;
+        font-size: 0.85rem;
+        text-align: center;
+      }
+      @include ph {
+        width: 20rem;
+      }
+    }
+
+    form {
+      width: 60%;
+      display: flex;
+      flex-wrap: wrap;
+      @include sm {
+        width: 80%;
+      }
+      .wrapper {
+        width: calc(50% - 10px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 5px;
+        margin-top: 20px;
+        @include sm {
+          width: 100%;
+        }
+
+        label {
+          font-size: 0.85rem;
+          @include sm {
+            font-size: 0.65rem;
+          }
+        }
+        input,
+        select {
+          width: 80%;
+          height: 2rem;
+          border: none;
+          outline: none;
+          border-bottom: 1px solid rgb(90, 90, 90);
+          border-radius: 20px;
+          padding: 3px 10px;
+
+          @include sm {
+            width: 22rem;
+            height: 1.5rem;
+            font-size: 0.75rem;
+          }
+          @include ph {
+            width: 16rem;
+          }
+        }
+        @include sm {
+          select {
+            width: 23rem;
+            height: 2rem;
+          }
+        }
+        @include ph {
+          select {
+            width: 17rem;
+            height: 2rem;
+          }
+        }
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+      }
+    }
+
+    .btn {
+      margin-top: 20px;
+      width: 60%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      button {
+        width: 15rem;
+        height: 3rem;
+        font-size: 1rem;
+        background-color: #003e71;
+        color: white;
+        border-radius: 20px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      button:hover {
+        background-color: rgba(255, 217, 0, 0.724);
+        color: #003e71;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 500px) and (max-width: 800px) {
+  .contact {
+    width: 80%;
+  }
+}

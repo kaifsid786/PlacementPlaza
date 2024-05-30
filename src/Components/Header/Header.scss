@@ -1,0 +1,84 @@
+.header-main {
+  width: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .header {
+    width: 89%;
+    max-width: 1366px;
+    height: 100px;
+    padding: 0 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+      flex: 0.5;
+      margin-right: -8rem;
+      img {
+        width: 5rem;
+      }
+    }
+
+    ul {
+      flex: 1.2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      li {
+        list-style: none;
+        color: #003e71;
+        font-weight: 500;
+        cursor: pointer;
+        padding: 10px;
+        transition: all 0.5s ease;
+        position: relative;
+      }
+      li:hover {
+        background-color: rgba(94, 94, 94, 0.1);
+        border-radius: 10px;
+      }
+    }
+
+    .contacts {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 10px;
+
+      .login {
+        padding: 10px;
+        border: 1px solid rgb(90, 96, 96);
+        background: white;
+        font-size: 16px;
+        color: #003e71;
+        font-weight: 540;
+        cursor: pointer;
+        border-radius: 10px;
+        transition: all 0.5s ease;
+      }
+      :hover {
+        background-color: #003e71;
+        color: white;
+      }
+
+      .demo {
+        padding: 10px;
+        border: 1px solid rgb(90, 96, 96);
+        color: white;
+        font-size: 16px;
+        background-color: #003e71;
+        font-weight: 500;
+        cursor: pointer;
+        border-radius: 10px;
+        transition: all 0.5s ease;
+      }
+      :hover {
+        color: #003e71;
+        background-color: aliceblue;
+      }
+    }
+  }
+}

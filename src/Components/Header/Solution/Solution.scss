@@ -1,0 +1,49 @@
+.soln {
+  position: absolute;
+  top: 3rem;
+  left: 0;
+  z-index: 100;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: white;
+  border: 1px solid rgb(230, 227, 227);
+  box-shadow: 0 5px 5px rgb(209, 209, 209);
+  .col {
+    width: 18rem;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+
+    h5 {
+      margin: 0;
+      font-size: 0.85rem;
+      color: rgb(161, 160, 160);
+    }
+
+    .wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      .box {
+        width: 2rem;
+        height: 2.5rem;
+        background-color: #98b5cc69;
+      }
+      h3 {
+        font-size: 1rem;
+        font-weight: 500;
+        color: #003e71;
+      }
+      h3:hover {
+        color: #98b5cc69;
+      }
+    }
+  }
+}
