@@ -1,7 +1,17 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import "./Contact.scss";
 import emailjs from "@emailjs/browser";
 const Contact = () => {
+  // Number Validation
+  const [value, setValue] = useState("");
+  const restrictNum = (e) => {
+    const inputValue = e.target.value;
+    // Allow only numbers
+    if (/^\d*$/.test(inputValue)) {
+      setValue(inputValue.slice(0, 10)); // Limit to 10 digits
+    }
+  };
+
   // Email Js --- Connection -------------------------->
   const form = useRef();
 
@@ -118,7 +128,14 @@ const Contact = () => {
             </div>
             <div className="wrapper">
               <label htmlFor="">Phone Number</label>
-              <input name="number" type="number" placeholder="+91" />
+              <input
+                value={value}
+                name="number"
+                type="number"
+                placeholder="+91"
+                maxLength={10}
+                onChange={restrictNum}
+              />
             </div>
           </div>
           <div className="bottom">

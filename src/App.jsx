@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Header from "./Components/Header/Header";
 import Footer from "./Components/Footer/Footer";
@@ -9,6 +9,10 @@ import Contact from "./Components/Contact/Contact";
 import HeaderPhone from "./Components/HeaderPhone/HeaderPhone";
 const App = () => {
   if (window.innerWidth === 900) window.location.reload();
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   return (
     <div

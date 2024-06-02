@@ -68,8 +68,12 @@ const Case = () => {
           <span style={{ color: "#003e71" }}>today.</span>{" "}
         </h2>
         <div className="btns">
-          <div className="talk">Let's Talk</div>
-          <div className="tutorial">Get Started</div>
+          <div className="talk" onClick={() => navigate("/contact-us")}>
+            Let's Talk
+          </div>
+          <div className="tutorial" onClick={() => navigate("/contact-us")}>
+            Get Started
+          </div>
         </div>
 
         <img className="watch" src="/watch.png" alt="" />
