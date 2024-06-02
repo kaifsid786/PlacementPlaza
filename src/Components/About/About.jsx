@@ -1,25 +1,49 @@
 import React from "react";
 import "./About.scss";
 import Card from "./Card/Card";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+
+const varient = {
+  initial: {
+    x: -100,
+    opacity: 0,
+  },
+  whileInView: {
+    x: "0",
+    opacity: 1,
+    transition: {
+      duration: 1,
+      staggerChildren: 0.5,
+    },
+  },
+};
+
 const About = () => {
   const valueData = [
     {
-      title: "Better Than Yesterday",
-      des: "We thrive on challenges, rethink the ordinary, and commit to ongoing progress. Our mission is daily advancement, with a clear roadmap for continuous improvement beyond.",
+      title: "Progress Every Day",
+      des: "We embrace challenges, challenge norms, and are dedicated to continuous advancement. Our goal is daily improvement, with a clear path for ongoing growth.",
     },
     {
-      title: "Impact Over Input",
-      des: "Every role we play is coded with a commitment to impactful outcomes. Beyond responsibility for actions, each of us shapes results that define our business.",
+      title: "Results Matter Most",
+      des: "Each role we fulfill is marked by a dedication to meaningful outcomes. Beyond mere actions, we each shape results that define our success.",
     },
     {
       title: "One Playground",
       des: "Our shared Playground is the global hub where we create, innovate, and triumph collectively. As a unified global team, we transcend boundaries to reach a common vision.",
     },
     {
-      title: "Obsession For Excellence",
-      des: "Excellence is not given; it's earned. Our  commitment drives us to achieve the extraordinary. Setting sky-high standards, we deliver with precision, expertise, and unparalleled service quality.",
+      title: "Unified Community",
+      des: "Our collective Community serves as a global center where we innovate, create, and succeed together. As a cohesive global team, we surpass barriers to achieve a shared vision.",
+    },
+    {
+      title: "Pursuit of Perfection",
+      des: "Excellence isn't handed to us; it's earned. Our dedication propels us toward exceptional achievements. Setting lofty standards, we deliver with precision, expertise, and unmatched quality of service.",
     },
   ];
+
+  const navigate = useNavigate();
 
   return (
     <div className="about">
@@ -29,28 +53,57 @@ const About = () => {
 
       <div className="about-content">
         <div className="banner-top">
-          <div className="left">
+          <motion.div
+            className="left"
+            initial={{
+              x: -100,
+              opacity: 0,
+            }}
+            animate={{
+              x: 0,
+              opacity: 1,
+            }}
+            transition={{
+              duration: 1,
+            }}
+          >
             <h5>GLOBAL TALENT WITHOUT BORDERS</h5>
             <h2>About Placement Plaza</h2>
             <p>
-              Streamline your global team management with Playroll—a
-              comprehensive platform offering essential HR and payroll tools and
-              guidance. Simplify hiring processes and eliminate management
-              barriers, allowing businesses to concentrate on their core
-              strengths and operations.
+              Placement Plaza, established in 2000, swiftly recognized the
+              burgeoning demand for Human Resource and Financial Management
+              amidst globalization and economic expansion. With a foresight
+              towards efficient HR management and transparent financial
+              practices, Placement Plaza emerged as a pioneering force in this
+              domain.
             </p>
-            <button>Speak to an Expert</button>
-          </div>
+            <button onClick={() => navigate("/contact-us")}>
+              Speak to an Expert
+            </button>
+          </motion.div>
 
-          <div className="right">
+          <motion.div
+            className="right"
+            initial={{
+              x: 100,
+              opacity: 0,
+            }}
+            animate={{
+              x: 0,
+              opacity: 1,
+            }}
+            transition={{
+              duration: 1,
+            }}
+          >
             <img src="/about-banner-top.jpg" alt="" />
-          </div>
+          </motion.div>
         </div>
 
         <div className="vision">
           <Card
             title="Our Vision"
-            para="Built to accelerate a borderless economy enabling your people to thrive."
+            para="To create and enable a cordial working environment which contributes towards the growth of the organization through efficient management of human resource and enforce transparent financial policies."
             msg="The secret to building a successful business is this: empower talent who want to change the world, wherever they are."
             isFounder={true}
             img="/vision.jpg"
@@ -79,13 +132,18 @@ const About = () => {
           }}
         >
           <div className="values">
-            <h5>Our Values</h5>
+            <h5>Our Core Principles</h5>
             <h2>The Values That Make Up Our DNA</h2>
 
-            <div className="contents">
+            <motion.div
+              className="contents"
+              variants={varient}
+              initial="initial"
+              whileInView="whileInView"
+            >
               {valueData.map((item, i) => {
                 return (
-                  <div className="box">
+                  <motion.div className="box" variants={varient}>
                     <div className="left">
                       <img src="/star.png" alt="" />
                     </div>
@@ -93,10 +151,10 @@ const About = () => {
                       <h3>{item.title}</h3>
                       <p>{item.des}</p>
                     </div>
-                  </div>
+                  </motion.div>
                 );
               })}
-            </div>
+            </motion.div>
           </div>
         </div>
 
@@ -107,8 +165,12 @@ const About = () => {
             <span style={{ color: "#003e71" }}>today.</span>{" "}
           </h2>
           <div className="btns">
-            <div className="talk">Let's Talk</div>
-            <div className="tutorial">Get Started</div>
+            <div className="talk" onClick={() => navigate("/contact-us")}>
+              Let's Talk
+            </div>
+            <div className="tutorial" onClick={() => navigate("/contact-us")}>
+              Get Started
+            </div>
           </div>
 
           <img className="watch" src="/watch.png" alt="" />

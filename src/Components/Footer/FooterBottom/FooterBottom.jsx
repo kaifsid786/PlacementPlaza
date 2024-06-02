@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./FooterBottom.scss";
 import logo from "/logo.png";
 import fb from "/fb.png";
@@ -6,14 +6,43 @@ import twitter from "/twitter.png";
 import insta from "/insta.png";
 import linkedIn from "/linkedIn.png";
 import { useNavigate } from "react-router-dom";
+import emailjs from "@emailjs/browser";
 const FooterBottom = () => {
   const navigate = useNavigate();
+
+  // Email Js --- Connection -------------------------->
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    emailjs
+      .sendForm(
+        "service_u8tumqq",
+        "template_ggewpss",
+        form.current,
+        "Jr2_NGqGKWQW26WzV"
+      )
+      .then(
+        (result) => {
+          alert("Thank You , we have received your message");
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+
+    e.target.reset();
+  };
 
   return (
     <div className="footer-bottom">
       <div className="top">
         <div className="col-1">
-          <div className="logo">
+          <div
+            className="logo"
+            onClick={() => navigate("/")}
+            style={{ cursor: "pointer" }}
+          >
             <img src={logo} alt="" />
             <p
               style={
@@ -30,14 +59,18 @@ const FooterBottom = () => {
             </p>
           </div>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae
-            inventore, distinctio reprehenderit porro, exercitationem alias
-            impedit minus provident modi dolorum aperiam. Facilis explicabo ea
-            harum, illum totam esse velit! Nisi.
+            We provide the best staff for your office by ensuring top-tier
+            talent, thorough vetting processes, and a perfect fit for your
+            business needs.
           </p>
 
-          <form action="#">
-            <input type="text" placeholder="Enter your email" />
+          <form ref={form} onSubmit={sendEmail}>
+            <input
+              name="email"
+              type="email"
+              placeholder="Enter your email"
+              required
+            />
             <button>Subscribe</button>
           </form>
         </div>
@@ -50,20 +83,19 @@ const FooterBottom = () => {
           }
         >
           <h3>Services</h3>
-          <li>Hire Employees</li>
-          <li>Hire Contractors</li>
-          <li>Global Placement Plaza</li>
-          <li>Competitive Benefits</li>
-          <li>Global Talent Network</li>
+          <li onClick={() => navigate("/")}>Hire Employees</li>
+          <li onClick={() => navigate("/")}>Hire Contractors</li>
+          <li onClick={() => navigate("/")}>Global Placement Plaza</li>
+          <li onClick={() => navigate("/")}>Competitive Benefits</li>
+          <li onClick={() => navigate("/")}>Global Talent Network</li>
         </div>
         <div className="col-2">
           <h3>Solutions</h3>
-          <li>For Legal Teams</li>
-          <li>For Finance Teams</li>
-          <li>For People Teams</li>
-          <li>EOR Migrations</li>
-          <li>Compliance</li>
-          <li>For Founders</li>
+          <li onClick={() => navigate("/")}>For Legal Teams</li>
+          <li onClick={() => navigate("/")}>For Finance Teams</li>
+          <li onClick={() => navigate("/")}>For People Teams</li>
+          <li onClick={() => navigate("/")}>Compliance</li>
+          <li onClick={() => navigate("/")}>For Founders</li>
         </div>
 
         <div
@@ -72,23 +104,52 @@ const FooterBottom = () => {
         >
           <h3>Resources</h3>
           <li onClick={() => navigate("/case")}>Case Studies</li>
-          <li>Pricing</li>
+          <li onClick={() => navigate("/")}>Pricing</li>
           <li onClick={() => navigate("/about-us")}>About Us</li>
-          <li>Blogs</li>
+          <li onClick={() => navigate("/")}>Blogs</li>
 
           <div className="social-links">
             <h3>Our Social Media</h3>
             <div className="links">
-              <div className="circle">
+              <div
+                className="circle"
+                onClick={() =>
+                  window.open(
+                    "https://www.facebook.com/profile.php?id=61560473970919",
+                    "_blank"
+                  )
+                }
+              >
                 <img src={fb} alt="" className="fb-img" />
               </div>
-              <div className="circle">
+              <div
+                className="circle"
+                onClick={() =>
+                  window.open("https://x.com/placement_7541", "_blank")
+                }
+              >
                 <img src={twitter} alt="" />
               </div>
-              <div className="circle">
+              <div
+                className="circle"
+                onClick={() =>
+                  window.open(
+                    "https://www.instagram.com/placementplaza3571/",
+                    "_blank"
+                  )
+                }
+              >
                 <img src={insta} alt="" />
               </div>
-              <div className="circle">
+              <div
+                className="circle"
+                onClick={() =>
+                  window.open(
+                    "https://www.linkedin.com/company/placement-plaza/",
+                    "_blank"
+                  )
+                }
+              >
                 <img src={linkedIn} alt="" />
               </div>
             </div>

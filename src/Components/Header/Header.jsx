@@ -53,7 +53,7 @@ const Header = () => {
             </span>
             <Solution state={isAboutHover} type="about" />
           </li>
-          <li>Pricing</li>
+          <li onClick={() => navigate("/")}>Pricing</li>
           <li
             onMouseEnter={() => setIsResourceHover(true)}
             onMouseLeave={() => setIsResourceHover(false)}

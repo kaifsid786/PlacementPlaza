@@ -1,6 +1,17 @@
 import React from "react";
 import "./Case.scss";
+import { useNavigate } from "react-router-dom";
 const Case = () => {
+  const companiesData = [
+    "/Companies/janani.png",
+    "/Companies/onida.png",
+    "/Companies/lg.png",
+    "/Companies/mahindra.png",
+    "/Companies/samsung.png",
+    "/Companies/surya.png",
+    "/Companies/godrej.png",
+  ];
+  const navigate = useNavigate();
   return (
     <div className="case">
       <div className="banner">
@@ -8,42 +19,42 @@ const Case = () => {
           <h5>Our work</h5>
           <h2>Case Studies</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab
-            quibusdam perspiciatis impedit veritatis iusto unde asperiores
-            laboriosam alias obcaecati repudiandae ipsa nesciunt suscipit atque,
-            numquam placeat velit perferendis fugiat eum.
+            Placement Plaza was established in the year 2000 at Patna and it
+            takes pride in stating that within a span of 23 years Placement
+            Plaza had its branches in the states of Jharkhand, Uttar Pradesh and
+            Madhya Pradesh, Delhi besides Bihar.
           </p>
-          <button>Get Started</button>
+          <button onClick={() => navigate("/contact-us")}>Get Started</button>
         </div>
         <div className="right">
           <div className="box">
             <div className="slider">
-              <div className="slides">Company-1</div>
-              <div className="slides">Company-2</div>
-              <div className="slides">Company-3</div>
-              <div className="slides">Company-4</div>
+              {companiesData.map((val, i) => {
+                return <img src={val} alt="" className="slides" key={i} />;
+              })}
             </div>
             {/* Duplicate */}
             <div className="slider">
-              <div className="slides">Company-1</div>
-              <div className="slides">Company-2</div>
-              <div className="slides">Company-3</div>
-              <div className="slides">Company-4</div>
+              {companiesData.map((val, i) => {
+                return <img src={val} alt="" className="slides" key={i} />;
+              })}
             </div>
           </div>
           <div className="box">
-            <div className="slider">
-              <div className="slides">Company-1</div>
-              <div className="slides">Company-2</div>
-              <div className="slides">Company-3</div>
-              <div className="slides">Company-4</div>
+            <div className="slider slider-2">
+              {companiesData.map((val, i) => {
+                return (
+                  <img src={val} alt="" className="slides type-2" key={i} />
+                );
+              })}
             </div>
             {/* Duplicate */}
             <div className="slider">
-              <div className="slides">Company-1</div>
-              <div className="slides">Company-2</div>
-              <div className="slides">Company-3</div>
-              <div className="slides">Company-4</div>
+              {companiesData.map((val, i) => {
+                return (
+                  <img src={val} alt="" className="slides type-2" key={i} />
+                );
+              })}
             </div>
           </div>
         </div>

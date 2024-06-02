@@ -1,33 +1,90 @@
 import React, { useState } from "react";
 import "./Home.scss";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+
+const varient = {
+  initial: {
+    x: -100,
+    opacity: 0,
+  },
+  animate: {
+    x: "0",
+    opacity: 1,
+    transition: {
+      duration: 1,
+      staggerChildren: 0.5,
+    },
+  },
+};
+
+const varient2 = {
+  initial: {
+    y: 200,
+    opacity: 0,
+  },
+  whileInView: {
+    y: "0",
+    opacity: 1,
+    transition: {
+      duration: 1,
+    },
+  },
+};
+
 const Home = () => {
   const uspData = [
-    "Reduce onboarding time to minutes",
-    "Dedicated human service for human problems, guaranteed. Not bots",
-    "Multi-currency payroll, localised benefits, automated compliant contracts and more",
-    "Local, legal, tax and accounting expertise at your finger tips",
+    "Optimize Management Focus to concentrate on achieving strategic organizational goals.",
+    "Tailored Workforce Solutions to meet specific organizational needs efficiently.",
+    "Customized Training Programs to align with the organization's requirements and enhance workforce capabilities.",
+    "Ensured Timely Payments to ensure satisfaction and reliability.",
+    "Compliance and Benefits Management with legal standards and safeguarding employee benefits.",
   ];
   const serviceData = [
     {
-      title: "Hire Global Talent",
-      subTitle: "Hire Best Global Talent",
+      title: "Hire Domestic Talent",
+      subTitle: "Hire Best Domestic Talent",
+      des: "Hiring domestic and global talent involves defining your needs, exploring diverse talent pools through online platforms, and understanding legal requirements for international hiring. Remote work arrangements and cultural sensitivity are key considerations, along with offering competitive compensation and streamlining the hiring process. Providing support for new hires and fostering diversity and inclusion are vital for success. Continuous feedback ensures effective collaboration and ongoing improvement within your team.",
+      img: "/Hirings/talent.jpg",
     },
     {
       title: "Hire Contractors",
       subTitle: "Hire Contractors Worldwide",
+      des: "Hiring contractors can offer flexibility and specialized skills without the commitment of a full-time employee. Start by clearly defining the scope of work and desired qualifications. Utilize online platforms, freelance marketplaces, and professional networks to find qualified contractors. Establish clear contracts outlining deliverables, timelines, and payment terms. Communication and project management tools can help facilitate collaboration with remote contractors. Ensure compliance with relevant labor laws and tax regulations, and consider factors like cultural fit and reliability when selecting contractors. Regular feedback and performance evaluations can help maintain quality and efficiency in contractor relationships.",
+      img: "/Hirings/contractor.jpg",
     },
     {
       title: "HR Dashboard",
       subTitle: "Visibility and Control Of All Things HR Through One Platform",
+      des: "An HR dashboard is a centralized tool that provides key insights and metrics related to various aspects of human resources management. It typically includes data on employee demographics, recruitment and hiring metrics, employee performance and engagement, turnover rates, training and development initiatives, and other relevant HR KPIs. The dashboard enables HR professionals and decision-makers to track trends, identify areas for improvement, and make data-driven decisions to optimize workforce management strategies. Visualizations such as charts, graphs, and tables make it easy to interpret and analyze HR data quickly. Additionally, customizable features allow organizations to tailor the dashboard to their specific needs and objectives.",
+      img: "/Hirings/dashboard.jpg",
     },
     {
       title: "Source Global Talent",
       subTitle: "Hire Global Talent With Placement Plaza",
+      des: "Source Global Talent Sourcing global talent involves leveraging online platforms like LinkedIn and international job boards, partnering with recruitment agencies, and networking with professionals worldwide. Utilizing employee referrals and engaging with remote work platforms and social media can also expand your reach. Additionally, collaborating with universities and cultural organizations helps access skilled graduates and diverse talent pools. By combining these strategies, businesses can effectively source global talent to drive innovation and growth.",
+      img: "/Hirings/global-talent.jpg",
     },
   ];
 
+  const companiesData = [
+    "/Companies/janani.png",
+    "/Companies/onida.png",
+    "/Companies/lg.png",
+    "/Companies/mahindra.png",
+    "/Companies/samsung.png",
+    "/Companies/surya.png",
+    "/Companies/godrej.png",
+    "/Companies/pfizer.png",
+    "/Companies/novartis.png",
+    "/Companies/relianceLog.png",
+  ];
+
+  const navigate = useNavigate();
   // Service Detail Logics
-  const [subTitle, setSubTitle] = useState("Hire Best Global Talent");
+  const [subTitle, setSubTitle] = useState("Hire Best Domestic Talent");
+  const [des, setDes] = useState(serviceData[0].des);
+  const [img, setImg] = useState(serviceData[0].img);
   const [selectedIndx, setSelectedIndx] = useState(0);
   const [isFading, setIsFading] = useState(false);
   const setIndx = (index) => {
@@ -36,65 +93,82 @@ const Home = () => {
     setIsFading(true); // Start fade out
     setTimeout(() => {
       setSubTitle(serviceData[index].subTitle);
+      setDes(serviceData[index].des);
+      setImg(serviceData[index].img);
       setIsFading(false); // Start fade in
     }, 500); // Match this duration with the CSS transition duration
   };
 
   return (
     <div className="home">
-      <div className="banner">
-        <h5>Best Priced HR Software</h5>
-        <h2>
-          Employer of Record & Compliance for your Global Team.{" "}
-          <span style={{ color: "goldenrod" }}>One Platform</span>
-        </h2>
-        <p>
-          Grow your global workforce on one platform with Employer of Record and
-          Contractor Management solutions. Best pricing. Same-day onboarding.
-          Available in 180+ countries.
-        </p>
-        <div className="btns">
-          <div className="talk">Let's Talk</div>
-          <div className="tutorial">Watch Tutorial</div>
-        </div>
-      </div>
+      <motion.div
+        className="banner"
+        variants={varient}
+        initial="initial"
+        animate="animate"
+      >
+        <motion.h5 variants={varient}>Best Staff Provider</motion.h5>
+        <motion.h2 variants={varient}>
+          "We provide top-tier talent, and a perfect fit for your
+          <span style={{ color: "goldenrod" }}>
+            {" "}
+            <b></b>Business needs."
+          </span>
+        </motion.h2>
+        <motion.p variants={varient}>
+          Grow your global workforce on one platform with our top-tier Employer
+          and Contractor Management solutions. Benefit from the best pricing,
+          same-day onboarding, and availability in 30+ countries.
+        </motion.p>
+        <motion.div className="btns">
+          <motion.div className="talk" onClick={() => navigate("/contact-us")}>
+            Let's Talk
+          </motion.div>
+          <motion.div className="tutorial">Watch Tutorial</motion.div>
+        </motion.div>
+      </motion.div>
 
       {/* section-1 */}
       <div className="section-1">
         <h3>
-          Leading Global Businesses Choose{" "}
-          <span style={{ color: "goldenrod" }}>Placement Plaza</span> For Their
-          Global Employment Needs
+          Leading domestic and global enterprises rely
+          <span style={{ color: "goldenrod" }}>
+            {" "}
+            <b />
+            Placement Plaza
+            <b />
+          </span>{" "}
+          for their comprehensive global employment solutions
         </h3>
         <div className="slider">
           <div className="slides">
-            <div className="companies">Company-1</div>
-            <div className="companies">Company-2</div>
-            <div className="companies">Company-3</div>
-            <div className="companies">Company-4</div>
-            <div className="companies">Company-5</div>
+            {companiesData.map((val, i) => {
+              return <img src={val} alt="" className="companies" key={i} />;
+            })}
           </div>
           {/* duplicate */}
           <div className="slides">
-            <div className="companies">Company-1</div>
-            <div className="companies">Company-2</div>
-            <div className="companies">Company-3</div>
-            <div className="companies">Company-4</div>
-            <div className="companies">Company-5</div>
+            {companiesData.map((val, i) => {
+              return <img src={val} alt="" className="companies" key={i} />;
+            })}
           </div>
         </div>
       </div>
 
       {/* section-2 */}
-      <div className="section-2">
+      <motion.div
+        className="section-2"
+        variants={varient2}
+        initial="initial"
+        whileInView="whileInView"
+      >
         <h5>Placement Plaza's USP</h5>
-        <h2>Your All-in-One Global Workforce Management Partner</h2>
+        <h2>
+          Enhancing Organizational Efficiency with Comprehensive HR Solutions
+        </h2>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus ducimus
-          exercitationem aut repudiandae nam. Cumque modi veritatis dicta nemo
-          iusto numquam tempora nesciunt, eum quibusdam cupiditate, tempore
-          temporibus ducimus ratione sit eveniet non nobis ipsam a voluptatem
-          debitis aperiam ut.
+          Derived from its vision, Placement Plaza focuses on delivering
+          strategic HR solutions to support organizational success:
         </p>
         <div className="contents">
           <div className="left">
@@ -109,19 +183,19 @@ const Home = () => {
                 </li>
               );
             })}
-            <button>Get Started</button>
+            <button onClick={() => navigate("/contact-us")}>Get Started</button>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* section-3 */}
       <div className="section-3">
         <h2>What Services We Offers You</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum
-          non, aspernatur impedit tempore fugit repudiandae natus dicta,
-          pariatur id nisi, sequi officiis quis ipsam illum accusamus illo magni
-          ullam fuga?
+          Global and domestic Employment Solution| Talent Acquisition| Training
+          and Development| Payroll and Compensation Management | Benefits
+          Administration |HR Compliance and Risk Management | Onboarding and
+          Offboarding
         </p>
         <div className="service-menu">
           {serviceData.map((val, i) => {
@@ -150,22 +224,16 @@ const Home = () => {
         >
           <div className="left">
             <h2>{subTitle}</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
-              voluptas nam sed, fuga nihil nostrum molestiae laudantium
-              repudiandae minima velit laborum! Voluptate quaerat dolores ipsum
-              expedita laborum incidunt voluptatem molestias at quae, dolore
-              dicta atque dolor optio, deleniti ullam! At.
-            </p>
+            <p>{des}</p>
           </div>
           <div className="right">
-            <img src="/global-talent.jpg" alt="" />
+            <img src={img} alt="" />
           </div>
         </div>
       </div>
 
       {/* section-4 */}
-      <div className="service-detail section-4">
+      {/* <div className="service-detail section-4">
         <div className="left">
           <h5>IN-DEPTH COUNTRY HIRING GUIDES</h5>
           <h2>Guides for Hiring Today's Top Talent</h2>
@@ -181,23 +249,38 @@ const Home = () => {
         <div className="right">
           <img src="/guide.jpg" alt="" />
         </div>
-      </div>
+      </div> */}
 
       {/* section-5 */}
-      <div className="section-5">
+      <motion.div
+        className="section-5"
+        initial={{
+          opacity: 0,
+        }}
+        whileInView={{
+          opacity: 1,
+        }}
+        transition={{
+          duration: 2,
+        }}
+      >
         <h5>Scale the way you work, with Placement Plaza.</h5>
         <h2>
           Let's grow your distributed workforce,{" "}
           <span style={{ color: "#003e71" }}>today.</span>{" "}
         </h2>
         <div className="btns">
-          <div className="talk">Let's Talk</div>
-          <div className="tutorial">Get Started</div>
+          <div className="talk" onClick={() => navigate("/contact-us")}>
+            Let's Talk
+          </div>
+          <div className="tutorial" onClick={() => navigate("/contact-us")}>
+            Get Started
+          </div>
         </div>
 
         <img className="watch" src="/watch.png" alt="" />
         <img className="team-work" src="/teamwork2.png" alt="" />
-      </div>
+      </motion.div>
     </div>
   );
 };

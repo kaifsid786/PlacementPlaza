@@ -10,16 +10,32 @@ const HeaderPhone = () => {
 
   const navigate = useNavigate();
 
+  const solData = [
+    "Stay Compliant",
+    "Hire Employee",
+    "Hire Contractors",
+    "Finance Teams",
+    "HR Teamss",
+    "Legal Teams",
+  ];
+
   return (
     <div className="header-ph">
-      <div className="logo">
+      <div
+        className="logo"
+        onClick={() => {
+          navigate("/");
+          setShowHiddenMenu(false);
+        }}
+      >
         <img src="/logo.png" alt="" />
       </div>
-      <div className="right" onClick={() => setShowHiddenMenu(!showHiddenMenu)}>
+      <div className="right">
         <h5 onClick={() => navigate("/contact-us")}>Book a Demo</h5>
         <div
           className="hamMenu"
           style={showHiddenMenu ? { background: "#003e71" } : {}}
+          onClick={() => setShowHiddenMenu(!showHiddenMenu)}
         >
           <div
             className="line"
@@ -50,16 +66,22 @@ const HeaderPhone = () => {
               <RiArrowDropDownLine />
             </span>{" "}
           </div>
-          <ul style={height ? { height: "20rem" } : { height: "0" }}>
+          <ul style={height ? { height: "15rem" } : { height: "0" }}>
             <h5>Solution By Role</h5>
-            <li>EOR Migration</li>
-            <li>Stay Compliant</li>
-            <li>Hire Employee</li>
-            <li>Hire Contractors</li>
-            <li>EOR Migration</li>
-            <li>Stay Compliant</li>
-            <li>Hire Employee</li>
-            <li>Hire Contractors</li>
+            {solData.map((val, i) => {
+              return (
+                <li
+                  key={i}
+                  onClick={() => {
+                    navigate("/");
+                    setShowHiddenMenu(false);
+                    setHeight(false);
+                  }}
+                >
+                  {val}
+                </li>
+              );
+            })}
           </ul>
         </li>
         <li>
@@ -71,9 +93,33 @@ const HeaderPhone = () => {
           </div>
           <ul style={height2 ? { height: "11rem" } : { height: "0" }}>
             <h5 style={{ marginTop: "0" }}>Solution By Role</h5>
-            <li onClick={() => navigate("/about-us")}>About Us</li>
-            <li onClick={() => navigate("/case")}>Case Studies</li>
-            <li>Country Coverage</li>
+            <li
+              onClick={() => {
+                navigate("/about-us");
+                setShowHiddenMenu(false);
+                setHeight2(false);
+              }}
+            >
+              About Us
+            </li>
+            <li
+              onClick={() => {
+                navigate("/case");
+                setShowHiddenMenu(false);
+                setHeight2(false);
+              }}
+            >
+              Case Studies
+            </li>
+            <li
+              onClick={() => {
+                navigate("/");
+                setShowHiddenMenu(false);
+                setHeight2(false);
+              }}
+            >
+              Country Coverage
+            </li>
           </ul>
         </li>
         <li>
@@ -89,9 +135,33 @@ const HeaderPhone = () => {
           </div>
           <ul style={height3 ? { height: "11rem" } : { height: "0" }}>
             <h5 style={{ marginTop: "0" }}>Resoruces and Tools</h5>
-            <li>Global Hiring Guides</li>
-            <li>Blog</li>
-            <li>HR Terms Glossary</li>
+            <li
+              onClick={() => {
+                navigate("/");
+                setShowHiddenMenu(false);
+                setHeight3(false);
+              }}
+            >
+              Global Hiring Guides
+            </li>
+            <li
+              onClick={() => {
+                navigate("/");
+                setShowHiddenMenu(false);
+                setHeight3(false);
+              }}
+            >
+              Blog
+            </li>
+            <li
+              onClick={() => {
+                navigate("/");
+                setShowHiddenMenu(false);
+                setHeight3(false);
+              }}
+            >
+              HR Terms Glossary
+            </li>
           </ul>
         </li>
       </div>

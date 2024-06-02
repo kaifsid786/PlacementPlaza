@@ -8,6 +8,8 @@ import Case from "./Components/CaseStudies/Case";
 import Contact from "./Components/Contact/Contact";
 import HeaderPhone from "./Components/HeaderPhone/HeaderPhone";
 const App = () => {
+  if (window.innerWidth === 900) window.location.reload();
+
   return (
     <div
       style={{

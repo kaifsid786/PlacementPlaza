@@ -68,88 +68,108 @@
     form {
       width: 60%;
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
       @include sm {
         width: 80%;
       }
-      .wrapper {
-        width: calc(50% - 10px);
+      .top {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        .wrapper {
+          width: calc(50% - 10px);
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+          gap: 5px;
+          margin-top: 20px;
+          @include sm {
+            width: 100%;
+          }
+
+          label {
+            font-size: 0.85rem;
+            @include sm {
+              font-size: 0.65rem;
+            }
+          }
+          input,
+          select {
+            width: 80%;
+            height: 2rem;
+            border: none;
+            outline: none;
+            border-bottom: 1px solid rgb(90, 90, 90);
+            border-radius: 20px;
+            padding: 3px 10px;
+
+            @include sm {
+              width: 22rem;
+              height: 1.5rem;
+              font-size: 0.75rem;
+            }
+            @include ph {
+              width: 16rem;
+            }
+          }
+          @include sm {
+            select {
+              width: 23rem;
+              height: 2rem;
+            }
+          }
+          @include ph {
+            select {
+              width: 17rem;
+              height: 2rem;
+            }
+          }
+          input[type="number"]::-webkit-outer-spin-button,
+          input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+          }
+        }
+      }
+
+      .bottom {
+        width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
-        gap: 5px;
-        margin-top: 20px;
+
         @include sm {
-          width: 100%;
+          align-items: center;
         }
 
-        label {
-          font-size: 0.85rem;
-          @include sm {
-            font-size: 0.65rem;
+        .btn {
+          margin-top: 20px;
+          width: 60%;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          button {
+            width: 15rem;
+            height: 3rem;
+            font-size: 1rem;
+            background-color: #003e71;
+            color: white;
+            border-radius: 20px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+          }
+          button:hover {
+            background-color: rgba(255, 217, 0, 0.724);
+            color: #003e71;
           }
         }
-        input,
-        select {
-          width: 80%;
-          height: 2rem;
-          border: none;
-          outline: none;
-          border-bottom: 1px solid rgb(90, 90, 90);
-          border-radius: 20px;
-          padding: 3px 10px;
-
-          @include sm {
-            width: 22rem;
-            height: 1.5rem;
-            font-size: 0.75rem;
-          }
-          @include ph {
-            width: 16rem;
-          }
-        }
-        @include sm {
-          select {
-            width: 23rem;
-            height: 2rem;
-          }
-        }
-        @include ph {
-          select {
-            width: 17rem;
-            height: 2rem;
-          }
-        }
-        input[type="number"]::-webkit-outer-spin-button,
-        input[type="number"]::-webkit-inner-spin-button {
-          -webkit-appearance: none;
-          margin: 0;
-        }
-      }
-    }
-
-    .btn {
-      margin-top: 20px;
-      width: 60%;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      button {
-        width: 15rem;
-        height: 3rem;
-        font-size: 1rem;
-        background-color: #003e71;
-        color: white;
-        border-radius: 20px;
-        border: none;
-        outline: none;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-      button:hover {
-        background-color: rgba(255, 217, 0, 0.724);
-        color: #003e71;
       }
     }
   }

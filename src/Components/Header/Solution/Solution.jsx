@@ -1,59 +1,96 @@
 import React, { useEffect, useState } from "react";
 import "./Solution.scss";
 import { useNavigate } from "react-router-dom";
+import { GrShieldSecurity } from "react-icons/gr";
+import { FaRegFileLines } from "react-icons/fa6";
+import { RiBarChartGroupedFill } from "react-icons/ri";
+import { IoIosPeople } from "react-icons/io";
+import { GoLaw } from "react-icons/go";
+import { GoStack } from "react-icons/go";
+import { MdBarChart } from "react-icons/md";
+import { RiGlobalFill } from "react-icons/ri";
+import { FaRegFileImage } from "react-icons/fa";
+
 const Solution = ({ state, type }) => {
   const solData = [
     {
       title: "Stay Compliant",
-      img: "",
+      img: <GrShieldSecurity />,
+      nav: "/",
     },
     {
       title: "Hire Employee",
-      img: "",
+      img: <FaRegFileLines />,
+      nav: "/",
     },
     {
       title: "Hire Contractors",
-      img: "",
+      img: <FaRegFileLines />,
+      nav: "/",
+    },
+  ];
+  const solData2 = [
+    {
+      title: "Finance Teams",
+      img: <RiBarChartGroupedFill />,
+      nav: "/",
+    },
+    {
+      title: "HR Teams",
+      img: <IoIosPeople />,
+      nav: "/",
+    },
+    {
+      title: "Legal Teams",
+      img: <GoLaw />,
+      nav: "/",
     },
   ];
 
   const aboutData = [
     {
       title: "About Us",
-      img: "",
+      img: <GoStack />,
       nav: "/about-us",
+      p: "Know all about us",
     },
     {
       title: "Case Studies",
-      img: "",
-      nav: "case",
+      img: <MdBarChart />,
+      nav: "/case",
+      p: "About our customers",
     },
     {
       title: "Country Coverage",
-      img: "",
-      nav: "",
+      img: <MdBarChart />,
+      nav: "/",
+      p: "Hiring in 30+ Countries",
     },
   ];
 
   const resourceData = [
     {
       title: "Global Hiring Guides",
-      img: "",
+      img: <RiGlobalFill />,
       p: "Free in depth hirings for you",
+      nav: "/",
     },
     {
       title: "Blogs",
-      img: "",
+      img: <FaRegFileImage />,
       p: "Stay up to date with HR news and blogs",
+      nav: "/",
     },
     {
       title: "HR Terms",
-      img: "",
+      img: <GrShieldSecurity />,
       p: "Your HR Terminology handbook",
+      nav: "/",
     },
   ];
 
   const [showData, setShowData] = useState([]);
+  const [showDataCol2, setShowDataCol2] = useState([]);
   const [showCol2, setShowCol2] = useState(false);
   const [colTitle, setColTitle] = useState("");
   const [showP, setShowP] = useState(false);
@@ -63,10 +100,12 @@ const Solution = ({ state, type }) => {
       setShowData(solData);
       setShowCol2(true);
       setColTitle("Solution");
+      setShowDataCol2(solData2);
     } else if (type === "about") {
       setShowData(aboutData);
       setShowCol2(false);
       setColTitle("Why Placement Plaza");
+      setShowP(true);
     } else {
       setShowData(resourceData);
       setShowCol2(false);
@@ -95,7 +134,7 @@ const Solution = ({ state, type }) => {
               }}
             >
               <div className="wrapper" key={i}>
-                <div className="box"></div>
+                <div className="box">{val.img}</div>
                 <h3
                   onClick={() => {
                     if (val.nav != undefined) {
@@ -136,11 +175,24 @@ const Solution = ({ state, type }) => {
         style={showCol2 === false ? { display: "none" } : {}}
       >
         <h5>By Role</h5>
-        {showData.map((val, i) => {
+        {showDataCol2.map((val, i) => {
           return (
             <div className="wrapper" key={i}>
-              <div className="box"></div>
-              <h3>{val.title}</h3>
+              <div className="box">{val.img}</div>
+              <h3
+                onClick={() => {
+                  if (val.nav != undefined) {
+                    navigate(`${val.nav}`);
+                    setIsClicked(true);
+                  }
+
+                  setTimeout(() => {
+                    setIsClicked(false);
+                  }, 2000);
+                }}
+              >
+                {val.title}
+              </h3>
             </div>
           );
         })}
